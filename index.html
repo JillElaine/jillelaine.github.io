@@ -18,10 +18,6 @@
       a:hover, a:active, a:focus {
         color: #E1610C;
       }
-      a.external {
-          background: url(http://jillelaine.github.io/external.png) center right no-repeat;
-          padding-right: 13px;
-      }
       body {
         background-color: #444444;
         padding: 0;
@@ -92,7 +88,7 @@
 
         <h3>Requirements</h3>
         <ul>
-          <li>Marcus Westin's store.js is required. <a href="https://github.com/marcuswestin/store.js">https://github.com/marcuswestin/store.js</a></li>
+          <li>Marcus Westin's store.js version 1.3.4+ is required. <a href="https://github.com/marcuswestin/store.js">https://github.com/marcuswestin/store.js</a></li>
           <li>JQuery version 1.7+ and JQuery UI are required. You can load Google's JQuery API. Put these statements in your page's 'head'</li>
             <ul>
               <li>&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;</li>
@@ -107,6 +103,23 @@
           <li><strong>The browser title changes on all 'same domain' windows/tabs when the warning dialog appears, and reverts back to the original title(s) if the warning dialog is dismissed.</strong></li>
           <li>If neither button on the warning dialog box is clicked within the 'dialogDisplayLimit', all 'same domain' windows/tabs will redirect to the 'redirectUrl'.</li>
         </ul>
+
+        <h3>Optional Functionality</h3>
+        <p>If user manually logs out (without use of the idleTimer), you can force all 'same domain' windows/tabs to redirect to the 'redirectUrl' page by
+        adding a small snippet of javascript to the user's 'redirectUrl' page. Note that the <strong>store.js</strong> must be available on the 'redirectUrl' page.</p>
+
+        <p>Optional Script</p>
+        <p>
+          &lt;script type="text/javascript"&gt;
+            <br />&nbsp;&nbsp;$(document).ready(function(){
+              <br />&nbsp;&nbsp;&nbsp;&nbsp;if (store.enabled) {
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;store.set('idleTimerLoggedOut', true);
+              <br />&nbsp;&nbsp;&nbsp;&nbsp;} else {
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('Dependent file missing. Please see: https://github.com/marcuswestin/store.js');
+              <br />&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br />&nbsp;&nbsp;});
+          &lt;/script&gt;
+        </p>
 
         <h3>The Demo Runtime Configuration</h3>
         <ul>
@@ -125,15 +138,15 @@
 
         <p>
           &lt;script type="text/javascript" charset="utf-8"&gt;
-          <br /> $(document).ready(function(){
-            <br />  $(document).idleTimeout({
-              <br />    idleTimeLimit: 30000,         // 30 seconds
-              <br />    dialogDisplayLimit: 30000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 30000 = 30 seconds, 180000 = 3 Minutes
-              <br />    redirectUrl: 'https://github.com/JillElaine/jquery-idleTimeout',       // redirect to this url
-              <br />    activityEvents: 'click keypress scroll wheel mousewheel', // separate each event with a space
-              <br />    sessionKeepAliveTimer: false, // Set to false to disable pings.
-            <br />  });
-          <br /> });
+          <br />&nbsp;&nbsp;$(document).ready(function(){
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;$(document).idleTimeout({
+              <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;idleTimeLimit: 30000,         // 30 seconds
+              <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dialogDisplayLimit: 30000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 30000 = 30 seconds, 180000 = 3 Minutes
+              <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;redirectUrl: 'https://github.com/JillElaine/jquery-idleTimeout',       // redirect to this url
+              <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;activityEvents: 'click keypress scroll wheel mousewheel', // separate each event with a space
+              <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sessionKeepAliveTimer: false, // Set to false to disable pings.
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;});
+          <br />&nbsp;&nbsp;});
         <br />&lt;/script&gt;
        </p>
 
