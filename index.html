@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>idleTimeout - Example Page</title>
+		<title>JillElaine jquery-idleTimeout - Demo Page</title>
 
 		<link type="text/css" rel="stylesheet" href="http://jillelaine.github.io/jquery-ui-1.8.21.custom.css"  />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
@@ -15,8 +15,8 @@
       $(document).ready(function(){
         $(document).idleTimeout({
           //idleTimeLimit: 1200000,       // 'No activity' time limit in milliseconds. 1200000 = 20 Minutes
-          idleTimeLimit: 45000,         // 45 seconds
-          dialogDisplayLimit: 180000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 180000 = 3 Minutes
+          idleTimeLimit: 30000,         // 30 seconds
+          dialogDisplayLimit: 30000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 180000 = 3 Minutes
           redirectUrl: 'https://github.com/JillElaine/jquery-idleTimeout',       // redirect to this url
 
           // optional custom callback to perform before redirect
@@ -44,26 +44,50 @@
 
 	</head>
 	<body>
-	<h1>JillElaine jquery-idleTimeout Testing Page</h1>
+	<h1>JillElaine jquery-idleTimeout Demo Page</h1>
 
-	  <h2><a href="https://github.com/JillElaine/jquery-idleTimeout">https://github.com/JillElaine/jquery-idleTimeout</a></h2>
+	  <h2>Code Page - <a href="https://github.com/JillElaine/jquery-idleTimeout">https://github.com/JillElaine/jquery-idleTimeout</a></h2>
 
-		<p>The idle time limit, 'idleTimeLimit', is set to 45 seconds (45000 milliseconds) for this demonstration.</p>
-	  <p>Activity events to detect, 'activityEvents', are set to 'click keypress scroll wheel mousewheel'. The event, 'mousemove', has been removed for this demonstration.</p>
-	  <p>If no activity events are detected within the idle time limit of 45 seconds, the warning dialog will appear.</p>
-	  <p>The warning dialog display limit, 'dialogDisplayLimit', is set to 3 minutes (180000 milliseconds).</p>
-	  <p>If neither button on the warning dialog box is clicked within the 'dialogDisplayLimit', the page will redirect to https://github.com/JillElaine/jquery-idleTimeout.</p>
+	  <h3>Functions across multiple windows and tabs within the same domain</h3>
+	  Try it! Open multiple browser windows and tabs.
+
+  <ul>
+    <li>If a window or tab is logged out, all other windows and tabs will log out too.</li>
+    <li>If warning dialog pops up on a window or tab, warning dialog appears on all other windows and tabs too.</li>
+    <li>If 'Stay Logged In' button on warning dialog is clicked, warning dialogs on all other windows and tabs will be dismissed too.</li>
+    <li>If 'Log Out Now' button on warning dialog is clicked, all other windows and tabs will log out too.</li>
+  </ul>
+
+    <h3>Requirements</h3>
+    <p>Marcus Westin's store.js is required. <a href="https://github.com/marcuswestin/store.js">https://github.com/marcuswestin/store.js</a></p>
+    <p>JQuery version 1.7+ and JQuery UI are required. You can load Google's JQuery API. Put these statements in your page's 'head'</p>
+    <ul>
+    <li><pre><code><script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script></code></pre></li>
+    <li><pre><code><script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script></code></pre></li>
+    </ul>
+
+	  <h3>The Demo Configuration</h3>
+		<p>The idle time limit, 'idleTimeLimit', is set to 30 seconds (30000 milliseconds).</p>
+	  <p>Activity events to detect, 'activityEvents', are set to 'click keypress scroll wheel mousewheel'. The event, 'mousemove', has been removed.</p>
+	  <p>The warning dialog display limit, 'dialogDisplayLimit', is set to 30 seconds.</p>
+	  <p>The redirect page, 'redirectUrl', is set to https://github.com/JillElaine/jquery-idleTimeout.</p>
+
+	  <h3>Functionality & Features</h3>
+	  <p>Works across multiple windows and tabs within the same domain.</p>
+	  <p>If no activity events are detected on any 'same domain' windows/tabs within the 'idleTimeLimit', the warning dialog will appear will appear on all 'same domain' windows/tabs.</p>
+	  <p><strong>The browser title changes on all 'same domain' windows/tabs when the warning dialog appears, and reverts back to the original title(s) if the warning dialog is dismissed.</strong></p>
+	  <p>If neither button on the warning dialog box is clicked within the 'dialogDisplayLimit', all 'same domain' windows/tabs will redirect to the 'redirectUrl'.</p>
 
 	  <p></p>
 
 	  <p>
-	  <pre>
+	  <pre><code>
 	  	<script type="text/javascript" charset="utf-8">
       $(document).ready(function(){
         $(document).idleTimeout({
           //idleTimeLimit: 1200000,       // 'No activity' time limit in milliseconds. 1200000 = 20 Minutes
-          idleTimeLimit: 45000,         // 45 seconds
-          dialogDisplayLimit: 180000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 180000 = 3 Minutes
+          idleTimeLimit: 30000,         // 30 seconds
+          dialogDisplayLimit: 30000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 30000 = 30 seconds, 180000 = 3 Minutes
           redirectUrl: 'https://github.com/JillElaine/jquery-idleTimeout',       // redirect to this url
 
           // optional custom callback to perform before redirect
@@ -75,7 +99,7 @@
           // configure which activity events to detect
           // http://www.quirksmode.org/dom/events/
           // https://developer.mozilla.org/en-US/docs/Web/Reference/Events
-          activityEvents: 'click keypress scroll wheel mousewheel', // separate each event with a space - mousemove has been removed
+          activityEvents: 'click keypress scroll wheel mousewheel', // separate each event with a space - mousemove has been removed for the demonstration
 
           //dialog box configuration
           dialogTitle: 'Session Expiration Warning',
@@ -88,7 +112,7 @@
         });
       });
 		</script>
-	  </pre>
+	  </code></pre>
 	  </p>
 
 
