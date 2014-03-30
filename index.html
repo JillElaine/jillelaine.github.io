@@ -4,6 +4,57 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>JillElaine jquery-idleTimeout - Demo Page</title>
 
+		<style>
+		  a {
+        text-decoration: none;
+        font-weight:bold;
+      }
+      a:link {
+        color: #AB4A0E;
+      }
+      a:visited {
+        color: #9F3A03;
+      }
+      /* Note that the A:hover must be placed after the A:link and A:visited rules */
+      a:hover, a:active, a:focus {
+        color: #E1610C;
+      }
+      /* adds 'outgoing' image to right of non-site links - appended with JS in layout */
+      a.external {
+          background: url(/images/external.png) center right no-repeat;
+          padding-right: 13px;
+      }
+      body {
+        background-color: #444444;
+        /*margin: 5px;*/
+        padding: 0;
+      }
+
+      .main_banner {
+        background-color: #AB4A0E;
+        border: 1px solid #FFCC88;
+        color: #FFEEBB;
+        margin: 5px;
+      }
+      .main_content {
+          background-color: #FCFCF0;
+          border: 1px solid #AAAAAA;
+          color: #000000;
+          font-family: Verdana;
+          font-size: 0.8em;
+          margin: 5px;
+          padding: 10px;
+      }
+      .main_content h1 {
+          font-family: "Trebuchet MS",Helvetica,sans-serif;
+          font-size: 2.5em;
+          margin: 0;
+      }
+      .main_content p {
+        margin-left: 10px;
+      }
+		</style>
+
 		<link type="text/css" rel="stylesheet" href="http://jillelaine.github.io/jquery-ui-1.8.21.custom.css"  />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
@@ -14,107 +65,83 @@
 		<script type="text/javascript" charset="utf-8">
       $(document).ready(function(){
         $(document).idleTimeout({
-          //idleTimeLimit: 1200000,       // 'No activity' time limit in milliseconds. 1200000 = 20 Minutes
           idleTimeLimit: 30000,         // 30 seconds
-          dialogDisplayLimit: 30000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 180000 = 3 Minutes
+          dialogDisplayLimit: 30000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds
           redirectUrl: 'https://github.com/JillElaine/jquery-idleTimeout',       // redirect to this url
-
-          // optional custom callback to perform before redirect
-          customCallback: false,       // set to false for no customCallback
-          // customCallback:    function() {    // define optional custom js function
-              // perform custom action before logout
-          // },
-
-          // configure which activity events to detect
-          // http://www.quirksmode.org/dom/events/
-          // https://developer.mozilla.org/en-US/docs/Web/Reference/Events
-          activityEvents: 'click keypress scroll wheel mousewheel', // separate each event with a space - mousemove has been removed
-
-          //dialog box configuration
-          dialogTitle: 'Session Expiration Warning',
-          dialogText: 'Because you have been inactive, your session is about to expire.',
-
-          // server-side session keep-alive timer & url
-          //sessionKeepAliveTimer: 60000, // Ping the server at this interval in milliseconds. 60000 = 1 Minute
+          activityEvents: 'click keypress scroll wheel mousewheel', // separate each event with a space
           sessionKeepAliveTimer: false, // Set to false to disable pings.
-          sessionKeepAliveUrl: '/',  // url to ping
         });
       });
 		</script>
 
 	</head>
 	<body>
-	<h1>JillElaine jquery-idleTimeout Demo Page</h1>
+    <div>
+      <div class="main_banner">
+        JillElaine jquery-idleTimeout Demo Page
+      </div>
 
-	  <h2>Code Page - <a href="https://github.com/JillElaine/jquery-idleTimeout">https://github.com/JillElaine/jquery-idleTimeout</a></h2>
+      <div class="main_content">
+        <h2>Code Page - <a href="https://github.com/JillElaine/jquery-idleTimeout">https://github.com/JillElaine/jquery-idleTimeout</a></h2>
 
-	  <h3>Functions across multiple windows and tabs within the same domain</h3>
-	  Try it! Open multiple browser windows and tabs of this same page.
+        <h3>Functions across multiple windows and tabs within the same domain</h3>
+        <strong>Try it! Open multiple browser windows and tabs of this same page.</strong>
+        <ul>
+          <li>If a window or tab is logged out, all other windows and tabs will log out too.</li>
+          <li>If warning dialog pops up on a window or tab, warning dialog appears on all other windows and tabs too.</li>
+          <li>If 'Stay Logged In' button on warning dialog is clicked, warning dialogs on all other windows and tabs will be dismissed too.</li>
+          <li>If 'Log Out Now' button on warning dialog is clicked, all other windows and tabs will log out too.</li>
+        </ul>
 
-  <ul>
-    <li>If a window or tab is logged out, all other windows and tabs will log out too.</li>
-    <li>If warning dialog pops up on a window or tab, warning dialog appears on all other windows and tabs too.</li>
-    <li>If 'Stay Logged In' button on warning dialog is clicked, warning dialogs on all other windows and tabs will be dismissed too.</li>
-    <li>If 'Log Out Now' button on warning dialog is clicked, all other windows and tabs will log out too.</li>
-  </ul>
+        <h3>Requirements</h3>
+        <ul>
+          <li>Marcus Westin's store.js is required. <a href="https://github.com/marcuswestin/store.js">https://github.com/marcuswestin/store.js</a></li>
+          <li>JQuery version 1.7+ and JQuery UI are required. You can load Google's JQuery API. Put these statements in your page's 'head'</li>
+            <ul>
+              <li>&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;</li>
+              <li>&lt;script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"&gt;&lt;/script&gt;</li>
+            </ul>
+        </ul>
 
-    <h3>Requirements</h3>
-    <p>Marcus Westin's store.js is required. <a href="https://github.com/marcuswestin/store.js">https://github.com/marcuswestin/store.js</a></p>
-    <p>JQuery version 1.7+ and JQuery UI are required. You can load Google's JQuery API. Put these statements in your page's 'head'</p>
-    <ul>
-    <li>&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;</li>
-    <li>&lt;script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"&gt;&lt;/script&gt;</li>
-    </ul>
+        <h3>Functionality & Features</h3>
+        <ul>
+          <li>Works across multiple windows and tabs within the same domain.</li>
+          <li>If no activity events are detected on any 'same domain' windows/tabs within the 'idleTimeLimit', the warning dialog will appear will appear on all 'same domain' windows/tabs.</li>
+          <li><strong>The browser title changes on all 'same domain' windows/tabs when the warning dialog appears, and reverts back to the original title(s) if the warning dialog is dismissed.</strong></li>
+          <li>If neither button on the warning dialog box is clicked within the 'dialogDisplayLimit', all 'same domain' windows/tabs will redirect to the 'redirectUrl'.</li>
+        </ul>
 
-	  <h3>The Demo Configuration</h3>
-		<p>The idle time limit, 'idleTimeLimit', is set to 30 seconds (30000 milliseconds).</p>
-	  <p>Activity events to detect, 'activityEvents', are set to 'click keypress scroll wheel mousewheel'. The event, 'mousemove', has been removed.</p>
-	  <p>The warning dialog display limit, 'dialogDisplayLimit', is set to 30 seconds.</p>
-	  <p>The redirect page, 'redirectUrl', is set to https://github.com/JillElaine/jquery-idleTimeout.</p>
+        <h3>The Demo Runtime Configuration</h3>
+        <ul>
+          <li>The idle time limit, 'idleTimeLimit', is set to 30 seconds (30000 milliseconds).</li>
+          <li>Activity events to detect, 'activityEvents', are set to 'click keypress scroll wheel mousewheel'. More information:</li>
+            <ul>
+              <li><a href="http://www.quirksmode.org/dom/events/">http://www.quirksmode.org/dom/events/</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference/Events">https://developer.mozilla.org/en-US/docs/Web/Reference/Events</a></li>
+            </ul>
+          <li>The warning dialog display limit, 'dialogDisplayLimit', is set to 30 seconds.</li>
+          <li>The redirect page, 'redirectUrl', is set to https://github.com/JillElaine/jquery-idleTimeout.</li>
+          <li>Session keep alive pings have been disabled.</li>
+        </ul>
 
-	  <h3>Functionality & Features</h3>
-	  <p>Works across multiple windows and tabs within the same domain.</p>
-	  <p>If no activity events are detected on any 'same domain' windows/tabs within the 'idleTimeLimit', the warning dialog will appear will appear on all 'same domain' windows/tabs.</p>
-	  <p><strong>The browser title changes on all 'same domain' windows/tabs when the warning dialog appears, and reverts back to the original title(s) if the warning dialog is dismissed.</strong></p>
-	  <p>If neither button on the warning dialog box is clicked within the 'dialogDisplayLimit', all 'same domain' windows/tabs will redirect to the 'redirectUrl'.</p>
+        <h3>Runtime Configuration Script - Demostration</h3>
 
-	  <p></p>
+        <p>
+          &lt;script type="text/javascript" charset="utf-8"&gt;
+          <br />$(document).ready(function(){
+            <br />$(document).idleTimeout({
+              <br />idleTimeLimit: 30000,         // 30 seconds
+              <br />dialogDisplayLimit: 30000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 30000 = 30 seconds, 180000 = 3 Minutes
+              <br />redirectUrl: 'https://github.com/JillElaine/jquery-idleTimeout',       // redirect to this url
+              <br />activityEvents: 'click keypress scroll wheel mousewheel', // separate each event with a space
+              <br />sessionKeepAliveTimer: false, // Set to false to disable pings.
+            <br />});
+          <br />});
+        &lt;/script&gt;
+       </p>
 
-	  <p>
-	  	&lt;script type="text/javascript" charset="utf-8"&gt;
-      $(document).ready(function(){
-        $(document).idleTimeout({
-          //idleTimeLimit: 1200000,       // 'No activity' time limit in milliseconds. 1200000 = 20 Minutes
-          idleTimeLimit: 30000,         // 30 seconds
-          dialogDisplayLimit: 30000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 30000 = 30 seconds, 180000 = 3 Minutes
-          redirectUrl: 'https://github.com/JillElaine/jquery-idleTimeout',       // redirect to this url
-
-          // optional custom callback to perform before redirect
-          customCallback: false,       // set to false for no customCallback
-          // customCallback:    function() {    // define optional custom js function
-              // perform custom action before logout
-          // },
-
-          // configure which activity events to detect
-          // http://www.quirksmode.org/dom/events/
-          // https://developer.mozilla.org/en-US/docs/Web/Reference/Events
-          activityEvents: 'click keypress scroll wheel mousewheel', // separate each event with a space - mousemove has been removed for the demonstration
-
-          //dialog box configuration
-          dialogTitle: 'Session Expiration Warning',
-          dialogText: 'Because you have been inactive, your session is about to expire.',
-
-          // server-side session keep-alive timer & url
-          //sessionKeepAliveTimer: 60000, // Ping the server at this interval in milliseconds. 60000 = 1 Minute
-          sessionKeepAliveTimer: false, // Set to false to disable pings.
-          sessionKeepAliveUrl: '/',  // url to ping
-        });
-      });
-		&lt;/script&gt;
-	  </p>
-
-
-
+      </div>
+    </div>
 	</body>
 </html>
 
