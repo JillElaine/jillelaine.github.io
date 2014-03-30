@@ -49,7 +49,7 @@
 	  <h2>Code Page - <a href="https://github.com/JillElaine/jquery-idleTimeout">https://github.com/JillElaine/jquery-idleTimeout</a></h2>
 
 	  <h3>Functions across multiple windows and tabs within the same domain</h3>
-	  Try it! Open multiple browser windows and tabs.
+	  Try it! Open multiple browser windows and tabs of this same page.
 
   <ul>
     <li>If a window or tab is logged out, all other windows and tabs will log out too.</li>
@@ -62,8 +62,8 @@
     <p>Marcus Westin's store.js is required. <a href="https://github.com/marcuswestin/store.js">https://github.com/marcuswestin/store.js</a></p>
     <p>JQuery version 1.7+ and JQuery UI are required. You can load Google's JQuery API. Put these statements in your page's 'head'</p>
     <ul>
-    <li><pre><code><script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script></code></pre></li>
-    <li><pre><code><script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script></code></pre></li>
+    <li>&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;</li>
+    <li>&lt;script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"&gt;&lt;/script&gt;</li>
     </ul>
 
 	  <h3>The Demo Configuration</h3>
@@ -81,8 +81,7 @@
 	  <p></p>
 
 	  <p>
-	  <pre><code>
-	  	<script type="text/javascript" charset="utf-8">
+	  	&lt;script type="text/javascript" charset="utf-8"&gt;
       $(document).ready(function(){
         $(document).idleTimeout({
           //idleTimeLimit: 1200000,       // 'No activity' time limit in milliseconds. 1200000 = 20 Minutes
@@ -111,8 +110,7 @@
           sessionKeepAliveUrl: '/',  // url to ping
         });
       });
-		</script>
-	  </code></pre>
+		&lt;/script&gt;
 	  </p>
 
 
