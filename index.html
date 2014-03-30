@@ -15,40 +15,37 @@
       a:visited {
         color: #9F3A03;
       }
-      /* Note that the A:hover must be placed after the A:link and A:visited rules */
       a:hover, a:active, a:focus {
         color: #E1610C;
       }
-      /* adds 'outgoing' image to right of non-site links - appended with JS in layout */
       a.external {
-          background: url(/images/external.png) center right no-repeat;
+          background: url(http://jillelaine.github.io/external.png) center right no-repeat;
           padding-right: 13px;
       }
       body {
         background-color: #444444;
-        /*margin: 5px;*/
         padding: 0;
       }
-
       .main_banner {
         background-color: #AB4A0E;
         border: 1px solid #FFCC88;
         color: #FFEEBB;
         margin: 5px;
+        padding: 10px;
       }
       .main_content {
-          background-color: #FCFCF0;
-          border: 1px solid #AAAAAA;
-          color: #000000;
-          font-family: Verdana;
-          font-size: 0.8em;
-          margin: 5px;
-          padding: 10px;
+        background-color: #FCFCF0;
+        border: 1px solid #AAAAAA;
+        color: #000000;
+        font-family: Verdana;
+        font-size: 0.8em;
+        margin: 5px;
+        padding: 10px;
       }
       .main_content h1 {
-          font-family: "Trebuchet MS",Helvetica,sans-serif;
-          font-size: 2.5em;
-          margin: 0;
+        font-family: "Trebuchet MS",Helvetica,sans-serif;
+        font-size: 2.5em;
+        margin: 0;
       }
       .main_content p {
         margin-left: 10px;
@@ -78,7 +75,7 @@
 	<body>
     <div>
       <div class="main_banner">
-        JillElaine jquery-idleTimeout Demo Page
+        <h1>JillElaine jquery-idleTimeout Demo Page</h1>
       </div>
 
       <div class="main_content">
@@ -88,9 +85,9 @@
         <strong>Try it! Open multiple browser windows and tabs of this same page.</strong>
         <ul>
           <li>If a window or tab is logged out, all other windows and tabs will log out too.</li>
-          <li>If warning dialog pops up on a window or tab, warning dialog appears on all other windows and tabs too.</li>
-          <li>If 'Stay Logged In' button on warning dialog is clicked, warning dialogs on all other windows and tabs will be dismissed too.</li>
-          <li>If 'Log Out Now' button on warning dialog is clicked, all other windows and tabs will log out too.</li>
+          <li>If warning dialog appears on one window/tab, a warning dialog appears on all other 'same domain' windows/tabs too.</li>
+          <li>If 'Stay Logged In' button on warning dialog is clicked, warning dialogs on all 'same domain' windows/tabs will be dismissed too.</li>
+          <li>If 'Log Out Now' button on warning dialog is clicked, all 'same domain' windows/tabs will log out too.</li>
         </ul>
 
         <h3>Requirements</h3>
@@ -105,7 +102,7 @@
 
         <h3>Functionality & Features</h3>
         <ul>
-          <li>Works across multiple windows and tabs within the same domain.</li>
+          <li>Works across multiple windows and tabs within the same domain <strong>thanks to Marcus Westin's store.js.</strong></li>
           <li>If no activity events are detected on any 'same domain' windows/tabs within the 'idleTimeLimit', the warning dialog will appear will appear on all 'same domain' windows/tabs.</li>
           <li><strong>The browser title changes on all 'same domain' windows/tabs when the warning dialog appears, and reverts back to the original title(s) if the warning dialog is dismissed.</strong></li>
           <li>If neither button on the warning dialog box is clicked within the 'dialogDisplayLimit', all 'same domain' windows/tabs will redirect to the 'redirectUrl'.</li>
@@ -124,20 +121,20 @@
           <li>Session keep alive pings have been disabled.</li>
         </ul>
 
-        <h3>Runtime Configuration Script - Demostration</h3>
+        <h3>The Demo Runtime Configuration Script</h3>
 
         <p>
           &lt;script type="text/javascript" charset="utf-8"&gt;
-          <br />$(document).ready(function(){
-            <br />$(document).idleTimeout({
-              <br />idleTimeLimit: 30000,         // 30 seconds
-              <br />dialogDisplayLimit: 30000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 30000 = 30 seconds, 180000 = 3 Minutes
-              <br />redirectUrl: 'https://github.com/JillElaine/jquery-idleTimeout',       // redirect to this url
-              <br />activityEvents: 'click keypress scroll wheel mousewheel', // separate each event with a space
-              <br />sessionKeepAliveTimer: false, // Set to false to disable pings.
-            <br />});
-          <br />});
-        &lt;/script&gt;
+          <br /> $(document).ready(function(){
+            <br />  $(document).idleTimeout({
+              <br />    idleTimeLimit: 30000,         // 30 seconds
+              <br />    dialogDisplayLimit: 30000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 30000 = 30 seconds, 180000 = 3 Minutes
+              <br />    redirectUrl: 'https://github.com/JillElaine/jquery-idleTimeout',       // redirect to this url
+              <br />    activityEvents: 'click keypress scroll wheel mousewheel', // separate each event with a space
+              <br />    sessionKeepAliveTimer: false, // Set to false to disable pings.
+            <br />  });
+          <br /> });
+        <br />&lt;/script&gt;
        </p>
 
       </div>
