@@ -4,7 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>idleTimeout - Example Page</title>
 
-		<link type="text/css" rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.css"  />
+		<link type="text/css" rel="stylesheet" href="http://jillelaine.github.io/jquery-ui-1.8.21.custom.css"  />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
 
@@ -17,7 +17,7 @@
           //idleTimeLimit: 1200000,       // 'No activity' time limit in milliseconds. 1200000 = 20 Minutes
           idleTimeLimit: 45000,         // 45 seconds
           dialogDisplayLimit: 180000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 180000 = 3 Minutes
-          redirectUrl: 'http://jillelaine.github.io/',       // redirect to this url
+          redirectUrl: 'https://github.com/JillElaine/jquery-idleTimeout',       // redirect to this url
 
           // optional custom callback to perform before redirect
           customCallback: false,       // set to false for no customCallback
@@ -44,24 +44,27 @@
 
 	</head>
 	<body>
-	<h1>idleTimeout Testing Page</h1>
+	<h1>JillElaine jquery-idleTimeout Testing Page</h1>
+
+	  <h2><a href="https://github.com/JillElaine/jquery-idleTimeout">https://github.com/JillElaine/jquery-idleTimeout</a></h2>
 
 		<p>The idle time limit, 'idleTimeLimit', is set to 45 seconds (45000 milliseconds) for this demonstration.</p>
 	  <p>Activity events to detect, 'activityEvents', are set to 'click keypress scroll wheel mousewheel'. The event, 'mousemove', has been removed for this demonstration.</p>
 	  <p>If no activity events are detected within the idle time limit of 45 seconds, the warning dialog will appear.</p>
-	  <p>The warning dialog display limit, 'dialogDisplayLimit', is set to 3 minutes (180000 milliseconds). If no activity is detected within the 'dialogDisplayLimit', the page will redirect.</p>
+	  <p>The warning dialog display limit, 'dialogDisplayLimit', is set to 3 minutes (180000 milliseconds).</p>
+	  <p>If neither button on the warning dialog box is clicked within the 'dialogDisplayLimit', the page will redirect to https://github.com/JillElaine/jquery-idleTimeout.</p>
 
 	  <p></p>
 
 	  <p>
-	  <code>
+	  <pre>
 	  	<script type="text/javascript" charset="utf-8">
       $(document).ready(function(){
         $(document).idleTimeout({
           //idleTimeLimit: 1200000,       // 'No activity' time limit in milliseconds. 1200000 = 20 Minutes
           idleTimeLimit: 45000,         // 45 seconds
           dialogDisplayLimit: 180000,   // Time to display the warning dialog before redirect (and optional callback) in milliseconds. 180000 = 3 Minutes
-          redirectUrl: 'http://jillelaine.github.io/',       // redirect to this url
+          redirectUrl: 'https://github.com/JillElaine/jquery-idleTimeout',       // redirect to this url
 
           // optional custom callback to perform before redirect
           customCallback: false,       // set to false for no customCallback
@@ -85,7 +88,7 @@
         });
       });
 		</script>
-	  </code>
+	  </pre>
 	  </p>
 
 
